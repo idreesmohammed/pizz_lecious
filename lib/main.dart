@@ -1,0 +1,15 @@
+// ignore_for_file: implementation_imports
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pizz_lecious/actual_app.dart';
+import 'package:pizz_lecious/bloc_logger.dart';
+import 'package:user_repository/src/firebase_user_repo.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  Bloc.observer = BlocLogger();
+  runApp(Pizzelicious(FirebaseUserRepo()));
+}
